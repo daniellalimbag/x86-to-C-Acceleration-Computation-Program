@@ -18,6 +18,7 @@ main:
 process_cars_loop:
     MOV rax, r12
     CMP rax, qword [matrixRows]
+    JGE end_processing
 
     ;load matric vals
     MOV rax, matrix
@@ -52,7 +53,10 @@ process_cars_loop:
     INC r12
     JMP process_cars_loop
 
-end:
+end_processing:
+    XOR r12, r12
+    
+end_program:
     ADD rsp, 12
     MOV rax, 0
     RET
