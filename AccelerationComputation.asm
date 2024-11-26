@@ -12,6 +12,47 @@ section .data
     hoursToSec dq 3600.0
     
 main:
-    ;write your code here
-    xor rax, rax
-    ret
+    XOR r12, r12;counter for the loop
+    SUB rsp, 12;3 spaces for results
+
+process_cars_loop:
+    MOV rax, r12
+    CMP rax, qword [matrixRows]
+
+    ;load matric vals
+    MOV rax, matrix
+    MOV rbx, r12
+    IMUL rbx, rbx, 24
+    ADD rax, rbx
+
+    MOVSD xmm0, qword [rax];V0
+    MOVSD xmm1, qword [rax + 8];V1
+    MOVSD xmm2, qword [rax + 16];T
+
+    ;conversion
+    MOVSD xmm3, qword [kmToM]
+    MOVSD xmm4, qword [hoursToSec]
+
+    ;V0 to m/s
+    MULSD xmm0, xmm3 ; xmm0 *= 1000.0
+    DIVSD xmm0, xmm4 ; xmm0 /= 3600.0
+
+    ;V1 to m/s
+    MULSD xmm1, xmm3 ; xmm1 *= 1000.0
+    DIVSD xmm1, xmm4 ; xmm1 /= 3600.0
+
+    ;(V1-V0)/T
+    SUBSD xmm1, xmm0
+    DIVSD xmm1, xmm2 ; xmm1 = (V1 - V0) / T
+
+    ;convert acceleration to integer
+    CVTSD2SI eax, xmm1
+    MOV [rsp + r12 * 4], eax
+
+    INC r12
+    JMP process_cars_loop
+
+end:
+    ADD rsp, 12
+    MOV rax, 0
+    RET
