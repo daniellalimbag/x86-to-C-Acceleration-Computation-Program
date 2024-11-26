@@ -5,8 +5,8 @@
 ;Ma. Julianna Reyes
 
 section .data
-    kmToM dq 1000.0
-    hoursToSec dq 3600.0
+    kmToM dd 1000.0
+    hoursToSec dd 3600.0
     
 section .text
 bits 64
@@ -29,22 +29,14 @@ process_cars_loop:
     MOVSS xmm1, [rdx + rbx + 4];V1
     MOVSS xmm2, [rdx + rbx + 8];T
     
-    ;convert to double
-    CVTSS2SD xmm0, xmm0
-    CVTSS2SD xmm1, xmm1
-    CVTSS2SD xmm2, xmm2
-    
-    SUBSD xmm1, xmm0
-    
     ;conversion
-    MOVSD xmm3, [rel kmToM]
-    MOVSD xmm4, [rel hoursToSec]
-    MULSD xmm1, xmm3
-    DIVSD xmm1, xmm4
-    DIVSD xmm1, xmm2
+    SUBSS xmm1, xmm0
+    MULSS xmm1, [rel kmToM]
+    DIVSS xmm1, [rel hoursToSec]
+    DIVSS xmm1, xmm2
 
     ;convert acceleration to integer
-    CVTSD2SI eax, xmm1
+    CVTSS2SI eax, xmm1
     MOV [r8 + r12 * 4], eax
 
     INC r12
