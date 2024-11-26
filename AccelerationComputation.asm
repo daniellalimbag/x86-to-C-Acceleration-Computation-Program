@@ -25,9 +25,9 @@ process_cars_loop:
     MOV rbx, r12
     IMUL rbx, 12
 
-    MOVSS xmm0, qword [rdx + rbx];V0
-    MOVSS xmm1, qword [rdx + rbx + 4];V1
-    MOVSS xmm2, qword [rdx + rbx + 8];T
+    MOVSS xmm0, [rdx + rbx];V0
+    MOVSS xmm1, [rdx + rbx + 4];V1
+    MOVSS xmm2, [rdx + rbx + 8];T
     
     ;convert to double
     CVTSD2SI xmm0, xmm0
@@ -37,8 +37,8 @@ process_cars_loop:
     SUBSD xmm1, xmm0
     
     ;conversion
-    MOVSD xmm3, qword [kmToM]
-    MOVSD xmm4, qword [hoursToSec]
+    MOVSD xmm3, [rel kmToM]
+    MOVSD xmm4, [rel hoursToSec]
     MULSD xmm1, xmm3
     DIVSD xmm1, xmm4
     DIVSD xmm1, xmm2
