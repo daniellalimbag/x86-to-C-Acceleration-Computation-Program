@@ -30,9 +30,9 @@ process_cars_loop:
     MOVSS xmm2, [rdx + rbx + 8];T
     
     ;convert to double
-    CVTSD2SI xmm0, xmm0
-    CVTSD2SI xmm1, xmm1
-    CVTSD2SI xmm2, xmm2
+    CVTSS2SD xmm0, xmm0
+    CVTSS2SD xmm1, xmm1
+    CVTSS2SD xmm2, xmm2
     
     SUBSD xmm1, xmm0
     
