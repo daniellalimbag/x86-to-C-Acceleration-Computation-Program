@@ -1,3 +1,9 @@
+;MP2 (XX22)
+;Manila Gang
+;John Rovere Iral
+;Daniella Limbag
+;Ma. Julianna Reyes
+
 %include 'io64.inc'
 section .data
     ;input matrix w the dataaa (V0, V1, Time)
