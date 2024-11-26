@@ -29,7 +29,7 @@ process_cars_loop:
     MOVSS xmm1, [rdx + rbx + 4];V1
     MOVSS xmm2, [rdx + rbx + 8];T
     
-    ;conversion
+    ;compute
     SUBSS xmm1, xmm0
     MULSS xmm1, [rel kmToM]
     DIVSS xmm1, [rel hoursToSec]
