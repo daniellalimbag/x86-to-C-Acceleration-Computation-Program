@@ -31,5 +31,28 @@ int main() {
                &matrix[i * 3 + 2]);
     }
     
+    // Measuring time
+    start = clock();
+
+	//Run 30 times
+    for (loopFlag = 0; loopFlag < 30; loopFlag++) {
+        x64CompAcceleration(rows, matrix, results);
+    }
+    
+    end = clock();
+    
+    time_used = (double)(end - start) / CLOCKS_PER_SEC * 1000;
+    average_time = time_used / 30;
+
+    // Print results and everage execution time
+    printf("\nAcceleration results (m/s^2):\n");
+    for (int i = 0; i < rows; i++) {
+        printf("%d\n", results[i]);
+    }
+    printf("\nAverage Execution Time (30 runs): %.6lf ms\n", average_time);
+
+    // Free allocated memory
+    free(matrix);
+    free(results);
 	return 0;
 }
