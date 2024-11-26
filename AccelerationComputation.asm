@@ -16,8 +16,10 @@ section .data
     hoursToSec dq 3600.0
     
 section .text
-global main   
-main:
+bits 64
+default rel
+global x64CompAcceleration   
+x64CompAcceleration:
     XOR r12, r12;counter for the loop
     SUB rsp, 12;3 spaces for results
 
