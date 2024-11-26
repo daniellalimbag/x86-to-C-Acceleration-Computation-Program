@@ -4,7 +4,6 @@
 ;Daniella Limbag
 ;Ma. Julianna Reyes
 
-%include 'io64.inc'
 section .data
     kmToM dq 1000.0
     hoursToSec dq 3600.0
