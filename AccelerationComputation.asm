@@ -1,6 +1,4 @@
 %include 'io64.inc'
-section .text
-global main
 section .data
     ;input matrix w the dataaa (V0, V1, Time)
     matrix dq 0.0, 62.5, 10.1
@@ -11,6 +9,8 @@ section .data
     kmToM dq 1000.0
     hoursToSec dq 3600.0
     
+section .text
+global main   
 main:
     XOR r12, r12;counter for the loop
     SUB rsp, 12;3 spaces for results
@@ -55,7 +55,17 @@ process_cars_loop:
 
 end_processing:
     XOR r12, r12
-    
+
+print_results_loop:
+    MOV rax, r12
+    CMP rax, qword [matrixRows]
+    JGE end_program
+    MOV eax, [rsp + r12 * 4]
+    PRINT_DEC 4, eax
+    PRINT_CHAR 10
+    INC r12
+    JMP print_results_loop
+
 end_program:
     ADD rsp, 12
     MOV rax, 0
