@@ -14,43 +14,39 @@ bits 64
 default rel
 global x64CompAcceleration   
 x64CompAcceleration:
+    PUSH rbx
+    PUSH r12
     XOR r12, r12;counter for the loop
-    SUB rsp, 12;3 spaces for results
 
 process_cars_loop:
-    MOV rax, r12
-    CMP rax, qword [matrixRows]
+    CMP r12d, ecx ;compare counter with number of rows
     JGE end_processing
 
     ;load matric vals
-    MOV rax, matrix
     MOV rbx, r12
-    IMUL rbx, rbx, 24
-    ADD rax, rbx
+    IMUL rbx, 12
 
-    MOVSD xmm0, qword [rax];V0
-    MOVSD xmm1, qword [rax + 8];V1
-    MOVSD xmm2, qword [rax + 16];T
-
+    MOVSS xmm0, qword [rdx + rbx];V0
+    MOVSS xmm1, qword [rdx + rbx + 4];V1
+    MOVSS xmm2, qword [rdx + rbx + 8];T
+    
+    ;convert to double
+    CVTSD2SI xmm0, xmm0
+    CVTSD2SI xmm1, xmm1
+    CVTSD2SI xmm2, xmm2
+    
+    SUBSD xmm1, xmm0
+    
     ;conversion
     MOVSD xmm3, qword [kmToM]
     MOVSD xmm4, qword [hoursToSec]
-
-    ;V0 to m/s
-    MULSD xmm0, xmm3 ; xmm0 *= 1000.0
-    DIVSD xmm0, xmm4 ; xmm0 /= 3600.0
-
-    ;V1 to m/s
-    MULSD xmm1, xmm3 ; xmm1 *= 1000.0
-    DIVSD xmm1, xmm4 ; xmm1 /= 3600.0
-
-    ;(V1-V0)/T
-    SUBSD xmm1, xmm0
-    DIVSD xmm1, xmm2 ; xmm1 = (V1 - V0) / T
+    MULSD xmm1, xmm3
+    DIVSD xmm1, xmm4
+    DIVSD xmm1, xmm2
 
     ;convert acceleration to integer
     CVTSD2SI eax, xmm1
-    MOV [rsp + r12 * 4], eax
+    MOV [r8 + r12 * 4], eax
 
     INC r12
     JMP process_cars_loop
@@ -58,17 +54,7 @@ process_cars_loop:
 end_processing:
     XOR r12, r12
 
-print_results_loop:
-    MOV rax, r12
-    CMP rax, qword [matrixRows]
-    JGE end_program
-    MOV eax, [rsp + r12 * 4]
-    PRINT_DEC 4, eax
-    PRINT_CHAR 10
-    INC r12
-    JMP print_results_loop
-
 end_program:
-    ADD rsp, 12
-    MOV rax, 0
+    POP r12
+    POP rbx
     RET
