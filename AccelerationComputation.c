@@ -11,6 +11,21 @@ Ma. Julianna Reyes
 
 extern void x64CompAcceleration(long long int rows, float* matrix, int* results);
 
+void x64CompAcceleration(int rows, float* matrix, int* results){
+     //Constants for conversions
+     const float kmtoM = 1000.0f;
+     const float hoursToSec = 3600.0f;
+     for(int i = 0; i < rows; i++){
+             float V0 = matrix[i*3]; //Initial Velocity
+             float V1 = matrix[i*3 + 1] //Final Velocity
+             float T = matrix[i*3 + 2] //Time
+             
+             float acceleration = (V1 - V0) * kmtoM / (T * hoursToSec);
+             
+             results[i] = (int)acceleration;        
+     }
+     }
+
 int main() {
 	int rows;
     clock_t start, end;
