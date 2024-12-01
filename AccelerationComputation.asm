@@ -1,5 +1,4 @@
 ;MP2 (XX22)
-;Manila Gang
 ;John Rovere Iral
 ;Daniella Limbag
 ;Ma. Julianna Reyes
