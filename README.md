@@ -73,7 +73,7 @@ For input sizes 10, 100, and 1000, both the x86-64 assembly and the C implementa
 
 For the largest tested input size, 10000, there was a noticeable change in execution time. The C implementation displayed an execution speed of 0.132600 ms.
 
-As exoected, the x86-64 implementation's execution time stayed at 0.000000 ms despite an input size of 10000, proving that assembly runs significantly faster than C.
+As expected, the x86-64 implementation's execution time stayed at 0.000000 ms despite an input size of 10000, proving that assembly runs significantly faster than C.
 
 ## Correctness Check
 
