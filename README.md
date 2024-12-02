@@ -1,5 +1,10 @@
 # x86-to-C-Acceleration-Computation-Program
 
+## Group Members
+- **Daniella Limbag**
+- **Ma. Julianna Reyes**
+- **John Rovere Iral**
+- 
 # Acceleration Computation Program
 
 ## Project Description
@@ -77,4 +82,4 @@ A correctness check was done using the sample input given in the specifications.
 
 A demo video of the group explaining the C and x86-64 programs' source code, compilation, execution was recorded. The video is uploaded in the Demo folder and on YouTube.
 
-[![Demo Video](Demo/demo_thumbnail.png)](https://youtu.be/3dNcPXV99bw)]
+[![Demo Video](Demo/demo_thumbnail.png)](https://youtu.be/3dNcPXV99bw)
