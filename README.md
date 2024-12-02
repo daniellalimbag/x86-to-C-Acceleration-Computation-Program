@@ -10,7 +10,7 @@
 ## Project Description
 This project calculates car acceleration based on initial velocity, final velocity, and time using x86-64 assembly and C.
 
-![Project Specs](Demo/Specifications.PNG)
+![Project Specs](Specifications.PNG)
 
 ## Prerequisites
 - NASM (Netwide Assembler)
