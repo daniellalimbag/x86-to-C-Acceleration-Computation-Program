@@ -4,7 +4,7 @@
 - **Daniella Limbag**
 - **Ma. Julianna Reyes**
 - **John Rovere Iral**
-- 
+
 # Acceleration Computation Program
 
 ## Project Description
