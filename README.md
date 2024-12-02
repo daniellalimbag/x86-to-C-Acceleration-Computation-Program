@@ -56,3 +56,25 @@ Car 3: 30.0, 160.7, 7.8
 ## Output
 - Displays acceleration for each car in m/s²
 - Shows average execution time over 30 runs
+
+## Execution Time and Performance Analysis
+
+![Performance Test 1](Demo/ptest1.PNG)
+![Performance Test 2](Demo/ptest2.PNG)
+
+For input sizes 10, 100, and 1000, both the x86-64 assembly and the C implementation take effectively 0.000000 ms. Both functions computed acceleration quickly and efficiently such that the program is unable to capture any significant differences in execution time.
+
+For the largest tested input size, 10000, there was a noticeable change in execution time. The C implementation displayed an execution speed of 0.132600 ms.
+
+As exoected, the x86-64 implementation's execution time stayed at 0.000000 ms despite an input size of 10000, proving that assembly runs significantly faster than C.
+
+## Correctness Check
+
+A correctness check was done using the sample input given in the specifications.
+![Correctness Check](Demo/input.PNG)
+
+## Demo Video
+
+[Demo](Demo/LBYARCH Demo.mp4)
+
+
