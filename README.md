@@ -75,6 +75,8 @@ A correctness check was done using the sample input given in the specifications.
 
 ## Demo Video
 
-![Demo](Demo/LBYARCH Demo.mp4)
+A demo video of the group explaining the C and x86-64 programs' source code, compilation, execution was recorded.
+
+[Demo](Demo/LBYARCH Demo.mp4)
 
 
