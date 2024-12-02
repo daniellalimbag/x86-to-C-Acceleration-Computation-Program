@@ -75,6 +75,6 @@ A correctness check was done using the sample input given in the specifications.
 
 ## Demo Video
 
-[Demo](Demo/LBYARCH Demo.mp4)
+![Demo](Demo/LBYARCH Demo.mp4)
 
 
